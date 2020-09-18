@@ -23,8 +23,8 @@ python main.py --dataset=mnist --model_path=./models/saved/mnist_cnn.pt --data_p
 
 Results are saved in **result** folder.
 
-![2](./assets/fig1.png ){: width="70%" }
-<img src="./assets/fig1.png" alt="drawing" width="200"/>
+
+<img src="./assets/fig1.png" alt="drawing1" width="1000"/>
 
 
 ### IMBD datsaet
@@ -38,7 +38,7 @@ python -m spacy download en
 ```shell
 python main.py --dataset=imdb --model_path=./models/saved/tut4-model.pt --data_path="This film is good" --d=1 --target_prob=0.9
 ```
-![2](./assets/fig2.png){: width="60%"}
+<img src="./assets/fig2.png" alt="drawing2" width="800"/>
 
 ### HELOC datsaet
 
@@ -48,7 +48,7 @@ python main.py --dataset=heloc --model_path=./models/saved/MLP_pytorch_HELOC_all
 
 Target probability over 0.7 is not allowed because of pre-trained model capacity. 
 
-![2](./assets/fig3.png){: width="70%"}
+<img src="./assets/fig3.png" alt="drawing3" width="1000"/>
 
 Arguments:
 
