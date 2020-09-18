@@ -29,7 +29,7 @@ Results are saved in **result** folder.
 <img src="./assets/fig1.png" alt="drawing1" width="500"/>
 
 
-### IMBD datsaet
+### IMBD dataset
 
 For IMDB dataset, you should download 'en' model. Type following command.
 
@@ -45,7 +45,7 @@ python main.py --dataset=imdb --model_path=./models/saved/tut4-model.pt --data_p
 ```
 <img src="./assets/fig2.png" alt="drawing2" width="400"/>
 
-### HELOC datsaet
+### HELOC dataset
 
 Run the collowing command to get counterfactual explanation for HELOC data.
 
