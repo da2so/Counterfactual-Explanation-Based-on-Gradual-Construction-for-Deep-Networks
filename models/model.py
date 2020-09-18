@@ -6,16 +6,6 @@ class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
 
-        # self.conv2d_1 = nn.Conv2d(1, 32, 3, 1)
-        # self.conv2d_2=nn.Conv2d(32, 32, 3, 1)
-        #
-        # self.conv2d_3 = nn.Conv2d(32, 64, 3, 1)
-        # self.conv2d_4 = nn.Conv2d(64, 64, 3, 1)
-        #
-        #
-        # self.dense_1 = nn.Linear(1024, 200)
-        # self.dense_2 = nn.Linear(200, 200)
-        # self.dense_3 = nn.Linear(200, 10)
         self.conv1 = nn.Conv2d(1, 32, 3, 1)
         self.conv1_1 = nn.Conv2d(32, 32, 3, 1)
 
@@ -25,11 +15,7 @@ class Net(nn.Module):
         self.fc3 = nn.Linear(1024, 200)
         self.fc4 = nn.Linear(200, 200)
         self.fc5 = nn.Linear(200, 10)
-        # self.l1 = nn.Linear(784, 520)
-        # self.l2 = nn.Linear(520, 320)
-        # self.l3 = nn.Linear(320, 240)
-        # self.l4 = nn.Linear(240, 120)
-        # self.l5 = nn.Linear(120, 10)
+
 
     def forward(self, x):
         x = self.conv1(x)
@@ -73,27 +59,15 @@ class CNN(nn.Module):
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, text):
-        # text = [batch size, sent len]
 
         embedded = self.embedding(text)
-
-        # embedded = [batch size, sent len, emb dim]
-
         embedded = embedded.unsqueeze(1)
 
-        # embedded = [batch size, 1, sent len, emb dim]
 
         conved = [F.relu(conv(embedded)).squeeze(3) for conv in self.convs]
-
-        # conved_n = [batch size, n_filters, sent len - filter_sizes[n] + 1]
-
         pooled = [F.max_pool1d(conv, conv.shape[2]).squeeze(2) for conv in conved]
 
-        # pooled_n = [batch size, n_filters]
-
         cat = self.dropout(torch.cat(pooled, dim=1))
-
-        # cat = [batch size, n_filters * len(filter_sizes)]
 
         return self.fc(cat)
 
@@ -103,18 +77,27 @@ class CNN(nn.Module):
     def expl(self, em):
         embedded = em.unsqueeze(1)
 
-        # embedded = [batch size, 1, sent len, emb dim]
-
         conved = [F.relu(conv(embedded)).squeeze(3) for conv in self.convs]
-
-        # conved_n = [batch size, n_filters, sent len - filter_sizes[n] + 1]
-
         pooled = [F.max_pool1d(conv, conv.shape[2]).squeeze(2) for conv in conved]
-
-        # pooled_n = [batch size, n_filters]
-
         cat = self.dropout(torch.cat(pooled, dim=1))
 
-        # cat = [batch size, n_filters * len(filter_sizes)]
-
         return self.fc(cat)
+
+class MLP(nn.Module):
+    def __init__(self, input_size, hidden_size=10, output_size=2):
+        super(MLP, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc3 = nn.Linear(hidden_size, output_size)
+        self.leakyrelu=nn.LeakyReLU()
+        self.elu=nn.ELU()
+
+
+    def forward(self, x):
+        output = self.relu(self.fc1(x) )      #layer1
+        output = self.relu(self.fc2(output))  #layer2
+        output = self.relu(self.fc2(output))  #layer3
+        output = self.relu(self.fc2(output))  #layer4
+        output = self.fc3(output)   #layer5
+        return output
