@@ -1,19 +1,24 @@
 # Counterfactual Explanation Based on Gradual Construction for Deep Networks
-Counterfactual Explanation Based on Gradual Construction for Deep Networks Pytorch
 
 
-## Requirements
+![Python version support](https://img.shields.io/badge/python-3.6-blue.svg)
+![Tensorflow version support](https://img.shields.io/badge/PyTorch-1.7.0-red.svg)
 
-- Pytorch 1.4.0 
-- Python 3.6
-- cv2 4.4.0
-- matplotlib 3.3.1
-- CUDA 10.1 (optional)
-- spacy 2.2.3
-- pandas 1.1.2
-- torchtext 0.5.0
+:star: Star us on GitHub — it helps!!
 
-## Running the code
+
+PyTorch implementation for *[Counterfactual Explanation Based on Gradual Construction for Deep Networks](https://arxiv.org/abs/2008.01897)*
+
+## Install
+
+You will need a machine with a GPU and CUDA installed.  
+Then, you prepare runtime environment:
+
+   ```shell
+   pip install -r requirements.txt
+   ```
+
+## Use
 
 ### MNIST dataset
 
@@ -79,5 +84,5 @@ Arguments:
 
 ## Understanding my paper
 
-Check my blog!!
+:white_check_mark: Check my blog!!
 [HERE](https://da2so.github.io/2020-09-14-Counterfactual_Explanation_Based_on_Gradual_Construction_for_Deep_Networks/)
