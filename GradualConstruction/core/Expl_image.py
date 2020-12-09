@@ -56,7 +56,7 @@ class Expl_image(Expl_base):
 
         while(1):
             imp_max = grad_imp_sort[0,mask_num]
-            imp_max_row = torch.div(imp_max, int(w / self.d))
+            imp_max_row = int(torch.div(imp_max, int(w / self.d)))
             imp_max_col = imp_max - imp_max_row * int(w / self.d)
             
             mask_tensor[b-1,:,imp_max_row, imp_max_col] = 0
