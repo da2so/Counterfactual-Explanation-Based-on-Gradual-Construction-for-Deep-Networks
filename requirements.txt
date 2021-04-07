@@ -1,6 +1,6 @@
 opencv-python==4.4.0.42
-torch==1.7.0+cu101
-torchvision==0.8.1+cu101
+torch==1.7.0
+torchvision==0.8.1
 torchtext==0.5.0
 matplotlib==3.3.2
 spacy==2.3.2
